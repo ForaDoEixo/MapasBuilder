@@ -4,7 +4,7 @@
 ### [list_entities] 
 Lista entidades de uma instalação do Mapas Culturais
 
-#### Attributes
+#### Atributos
 - **`url`***(obrigatorio)*: 
 	URL da instalação do Mapas Culturais.
  
