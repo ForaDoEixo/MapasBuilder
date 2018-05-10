@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Mapas Culturais Wordpress Entities Listing Plugin
-Plugin URI:
-Description: List entities from mapas culturais
+Plugin Name: Mapas Builder Plugin
+Plugin URI: http://plugins.redelivre.org.br/mapas-builder
+Description: List entities from mapas culturais in shortcode and Divi Module formats.
 Author: Caipira Lab
-Version: 1.0
+Version: 0.1
 Text Domain:
 */
 
