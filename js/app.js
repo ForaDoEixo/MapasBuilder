@@ -54,8 +54,6 @@ function getEvents(){
     }
     var url = jQuery('#list_entities').data('url') + limitstr + pagestr;
 
-    console.log(url);
-
 
     jQuery.ajax({
         url: url,

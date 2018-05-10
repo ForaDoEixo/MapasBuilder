@@ -103,3 +103,8 @@ Class MCWP_Entities_List
 add_action('init', function() {
 	$MCWP_Entities_List = new MCWP_Entities_List;
 });
+
+add_action('et_builder_ready', 'mcwp_load_the_module');
+function mcwp_load_the_module() {
+	require 'mcwp_entities_module.php';
+}
