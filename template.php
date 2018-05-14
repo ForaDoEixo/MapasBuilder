@@ -1,3 +1,8 @@
+<?php if (!is_null($mtemplate)) { ?>
+<script>
+<?= 'var mustache_template = `'.$mtemplate.'`;'; ?>
+</script>
+<?php } ?>
 <div id="list_entities" class="content" data-baseurl="<?= $atts['url']; ?>" data-url="<?= $url; ?>" data-entity="<?= $entity; ?>" <?= $pagination; ?> <?= $limit; ?>>
 	<div class="row top">
 		<?php if (!is_null($pagination)) { ?>

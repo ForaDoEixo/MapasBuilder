@@ -65,6 +65,22 @@ function getEvents(){
     });
 }
 
+function processKeynames(entity)
+{
+  const propNames = Object.getOwnPropertyNames(entity);
+
+  propNames.forEach(function(name) {
+    if (name.includes("."))
+    {
+        const desc = Object.getOwnPropertyDescriptor(entity, name);
+        Object.defineProperty(entity, name.split(".").slice(-1), desc);
+        delete entity[name];
+    }
+});
+
+
+}
+
 function showEvents(entities){
     jQuery('#loading').hide('fast');
     baseurl = jQuery('#list_entities').data('baseurl');
@@ -73,20 +89,20 @@ function showEvents(entities){
     html = '';
     for (var i = 0; i < entities.length; i++) {
         thumb = '';
+        processKeynames(entities[i]);
 
-        if(typeof entities[i]['@files:avatar.avatarBig'] != 'undefined')
-            thumb = '<img src="' + entities[i]['@files:avatar.avatarBig'].url + '" style="float: left;">';
-
-        spaces = new Array();
-
-        html += `<div class="row list_entities_item">
-        <div class="col-md-3">${thumb}</div>
-        <div class="col-md-9">
-        <h3><a href="${entities[i].singleUrl}" target="_blank">${entities[i].name}</a></h3>
-        <p>${entities[i].shortDescription}</p><br>`;
-
-
-        html += '</div></div>';
+        if (mustache_template === "")
+        {
+            mustache_template = `
+            <div class="row list_entities_item">
+            <div class="col-md-3"><img src="{{avatarBig.url}}"></div>
+            <div class="col-md-9">
+            <h3><a href="{{singleUrl}}" target="_blank">{{name}}</a></h3>
+            <p>{{shortDescription}}</p><br>
+            </div></div>
+            `;
+        }
+        html += Mustache.render(mustache_template,entities[i]);
     }
 
     jQuery('.list_entities').append(html);

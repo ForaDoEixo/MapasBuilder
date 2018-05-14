@@ -103,10 +103,31 @@ class ET_Builder_Module_Divi_List_Entities extends ET_Builder_Module {
                     ),
 
                 ),
+            'toggle_template' => array(
+                'label' => esc_html__('Change default template', 'mcwp_list_entities'),
+                'type' => 'yes_no_button',
+                'option_category' => 'basic_option',
+                'description' => esc_html__('Change the rendering template.', 'mcwp_list_entities'),
+                'options' => array(
+                    'off' => esc_html__( 'No', 'mcwp_list_entities'),
+                    'on'  => esc_html__( 'Yes', 'mcwp_list_entities'),
+                    ),
+                'affects' => array(
+                    '#et_pb_template'
+                    ),
+
+                ),
+            'template'     => array(
+                'label'           => esc_html__( 'Template', 'mcwp_list_entities' ),
+                'type'            => 'textarea',
+                'option_category' => 'basic_option',
+                'depends_show_if' => 'on',
+                ),
             );
 }
 function shortcode_callback( $atts, $content = null, $function_name ) {
     $extra_fields_str='';
+    $template_str='';
 
     if ($atts['toggle_sort'] == 'on')
     {
@@ -120,7 +141,14 @@ function shortcode_callback( $atts, $content = null, $function_name ) {
     {
         $extra_fields_str .= " limit='".$atts['limit']."' ";
     }
-    return do_shortcode("[list_entities url='".$atts['url']."' entity='".$atts['entity']."'".$extra_fields_str."]");
+    if ($atts['toggle_template'] == 'on')
+    {
+        if (isset($atts['template']))
+        {
+            $template_str = str_replace('%22','"',$atts['template'])."[/list_entities]";
+        }
+    }
+    return do_shortcode("[list_entities url='".$atts['url']."' entity='".$atts['entity']."'".$extra_fields_str."]".$template_str);
 }
 
 

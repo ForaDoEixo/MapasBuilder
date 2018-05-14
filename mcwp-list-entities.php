@@ -22,6 +22,8 @@ Class MCWP_Entities_List
 		}
 		wp_enqueue_script('list-entities-ajax-script', plugin_dir_url( __FILE__ ) . 'js/app.js', array('jquery'));
 
+		wp_enqueue_script('mustache', 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js');
+
 		wp_enqueue_style('list-entities-shortcode', plugin_dir_url( __FILE__ ) . 'css/mcwp-list-entities.css' );
 
 	}
@@ -66,6 +68,10 @@ Class MCWP_Entities_List
 			//$profiles  = $atts['profiles'];
 		}
 
+		if (isset($content))
+		{
+			$mtemplate = $content;
+		}
 
 		$params = [
 		'@files'     => $files,
@@ -89,10 +95,6 @@ Class MCWP_Entities_List
 		$url = add_query_arg($params, $atts['url'] . '/api/'.$entity.'/find');
 
 		ob_start();
-		if (isset($content))
-		{
-			echo "<script>var content=`".$content."`</script>";
-		}
 		include('template.php');
 		$html = ob_get_clean();
 		return $html;
