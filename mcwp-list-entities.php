@@ -14,7 +14,9 @@ Class MCWP_Entities_List
 	{
 		add_shortcode('list_entities', array(&$this, 'shortcode'));
 		add_action( 'wp_enqueue_scripts', array(&$this, 'addScripts') );
+		add_action( 'admin_enqueue_scripts', array(&$this, 'addAdminScripts') );
 	}
+
 	function addScripts() {
 		global $post;
 		if( is_a( $post, 'WP_Post' ) && !has_shortcode( $post->post_content, 'list_entities') && !has_shortcode($post->post_content, 'et_pb_mcwp_list_entities') ) {
@@ -27,7 +29,9 @@ Class MCWP_Entities_List
 		wp_enqueue_style('list-entities-shortcode', plugin_dir_url( __FILE__ ) . 'css/mcwp-list-entities.css' );
 
 	}
-
+	function addAdminScripts() {
+		wp_enqueue_style('list-entities-shortcode-admin', plugin_dir_url( __FILE__ ) . 'css/mcwp-list-entities-admin.css' );
+	}
 	function shortcode($atts, $content) {
 		if (!is_array($atts))
 		{

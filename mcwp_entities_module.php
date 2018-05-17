@@ -3,7 +3,7 @@ class ET_Builder_Module_Divi_List_Entities extends ET_Builder_Module {
     public $slug       = 'et_pb_mcwp_list_entities';
     public $vb_support = 'on';
     public function init() {
-        $this->name = esc_html__( 'Mapas Culturais: List Entities', 'mcwp_list_entities' );
+        $this->name = esc_html__( 'Mapas Builder', 'mcwp_list_entities' );
     }
     public function get_fields() {
         return array(
