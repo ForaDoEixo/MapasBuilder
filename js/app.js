@@ -81,27 +81,37 @@ function processKeynames(entity)
 
 }
 
+function loadTemplate()
+{
+    return`
+    <div class="row list_entities_item">
+    {{#avatarBig.url}}<div class="col-md-3"><img src="{{avatarBig.url}}"></div>{{/avatarBig.url}}
+    <div class="col-md-9">
+    <h3><a href="{{singleUrl}}" target="_blank">{{name}}</a></h3>
+    <p>{{shortDescription}}</p><br>
+    </div>
+    </div>
+    `;
+}
+
 function showEvents(entities){
     jQuery('#loading').hide('fast');
     baseurl = jQuery('#list_entities').data('baseurl');
     entity  = jQuery('#list_entities').data('entity');
-
+    if (jQuery("#mustache-template").length > 0)
+    {
+        mustache_template = jQuery("#mustache-template").html();
+    }
+    else
+    {
+        mustache_template = loadTemplate();
+    }
     html = '';
     for (var i = 0; i < entities.length; i++) {
         thumb = '';
         processKeynames(entities[i]);
 
-        if (mustache_template === "")
-        {
-            mustache_template = `
-            <div class="row list_entities_item">
-            <div class="col-md-3"><img src="{{avatarBig.url}}"></div>
-            <div class="col-md-9">
-            <h3><a href="{{singleUrl}}" target="_blank">{{name}}</a></h3>
-            <p>{{shortDescription}}</p><br>
-            </div></div>
-            `;
-        }
+
         html += Mustache.render(mustache_template,entities[i]);
     }
 

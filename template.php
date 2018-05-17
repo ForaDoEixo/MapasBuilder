@@ -1,7 +1,5 @@
-<?php if (!is_null($mtemplate)) { ?>
-<script>
-<?= 'var mustache_template = `'.$mtemplate.'`;'; ?>
-</script>
+<?php if (!empty($mtemplate)) { ?>
+<script id="mustache-template" type="x-tmpl-mustache"><?= $mtemplate; ?></script>
 <?php } ?>
 <div id="list_entities" class="content" data-baseurl="<?= $atts['url']; ?>" data-url="<?= $url; ?>" data-entity="<?= $entity; ?>" <?= $pagination; ?> <?= $limit; ?>>
 	<div class="row top">
