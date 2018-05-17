@@ -29,8 +29,16 @@ Class MCWP_Entities_List
 	}
 
 	function shortcode($atts, $content) {
-		if (!is_array($atts) || !isset($atts['url']))
+		if (!is_array($atts))
+		{
+			echo "Error! No arguments found.";
 			return;
+		}
+		if (!isset($atts['url']) || (empty($atts['url'])))
+		{
+			echo "Error! Url not found.";
+			return;
+		}
 
 		$atts['url'] = rtrim($atts['url'],"/");
 
