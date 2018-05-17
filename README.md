@@ -6,6 +6,31 @@ Plugin WordPress que habilita um shortcode para buscar informações da API do *
 ### [list_entities] 
 Lista entidades de uma instalação do Mapas Culturais
 
+**Exemplo:**
+```
+<div class="row list_entities_item">
+    <div class="col-md-3"><img src="{{avatarBig.url}}"></div>
+    <div class="col-md-9">
+    <h3><a href="{{singleUrl}}" target="_blank">{{name}}</a></h3>
+    <p>{{shortDescription}}</p><br>
+    </div></div>
+```
+
+## Templating
+### Mustache.js
+Minimal templating with {{mustaches}} in JavaScript - https://github.com/janl/mustache.js/
+
+**Exemplo:**
+```
+<div class="row list_entities_item">
+  {{#avatarBig.url}}<div class="col-md-3"><img src="{{avatarBig.url}}"></div>{{/avatarBig.url}}
+  <div class="col-md-9">
+    <h3><a href="{{singleUrl}}" target="_blank">{{name}}</a></h3>
+    <p>{{shortDescription}}</p><br>
+  </div>
+</div>
+```
+
 #### Atributos
 - **`url`***(obrigatorio)*: 
 	URL da instalação do Mapas Culturais.
