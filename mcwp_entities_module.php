@@ -3,7 +3,7 @@ class ET_Builder_Module_Divi_List_Entities extends ET_Builder_Module {
     public $slug       = 'et_pb_mcwp_list_entities';
     public $vb_support = 'on';
     public function init() {
-        $this->name = esc_html__( 'Mapas Culturais: List Entities', 'mcwp_list_entities' );
+        $this->name = esc_html__( 'Mapas Builder', 'mcwp_list_entities' );
     }
     public function get_fields() {
         return array(
@@ -23,28 +23,6 @@ class ET_Builder_Module_Divi_List_Entities extends ET_Builder_Module {
                     'event' => esc_html__( 'Event', 'mcwp_list_entities' ),
                     'subsite' => esc_html__( 'Subsite', 'mcwp_list_entities' ),
                     'seal' => esc_html__( 'Seal', 'mcwp_list_entities' ),
-                    ),
-                ),
-            'fields' => array(
-                'label' => esc_html__('Fields', 'mcwp_list_entities'),
-                'type' => 'multiple_checkboxes',
-                'option_category' => 'basic_option',
-                'description' => esc_html__('Fields to be returned.', 'mcwp_list_entities'),
-                'options' => array(
-                    'name' => esc_html__( 'Name', 'mcwp_list_entities'),
-                    'shortDescription'  => esc_html__( 'Short Description', 'mcwp_list_entities'),
-                    'singleUrl'  => esc_html__( 'Single URL', 'mcwp_list_entities'),
-                    ),
-                ),
-            'fields' => array(
-                'label' => esc_html__('Fields', 'mcwp_list_entities'),
-                'type' => 'multiple_checkboxes',
-                'option_category' => 'basic_option',
-                'description' => esc_html__('Fields to be returned.', 'mcwp_list_entities'),
-                'options' => array(
-                    'name' => esc_html__( 'Name', 'mcwp_list_entities'),
-                    'shortDescription'  => esc_html__( 'Short Description', 'mcwp_list_entities'),
-                    'singleUrl'  => esc_html__( 'Single URL', 'mcwp_list_entities'),
                     ),
                 ),
             'toggle_sort' => array(
@@ -113,9 +91,21 @@ class ET_Builder_Module_Divi_List_Entities extends ET_Builder_Module {
                     'on'  => esc_html__( 'Yes', 'mcwp_list_entities'),
                     ),
                 'affects' => array(
-                    '#et_pb_template'
+                    '#et_pb_template',
+                    '#et_pb_fields'
                     ),
 
+                ),
+            'fields' => array(
+                'label' => esc_html__('Fields', 'mcwp_list_entities'),
+                'type' => 'multiple_checkboxes',
+                'option_category' => 'basic_option',
+                'description' => esc_html__('Fields to be returned.', 'mcwp_list_entities'),
+                'options' => array(
+                    'name' => esc_html__( 'Name', 'mcwp_list_entities'),
+                    'shortDescription'  => esc_html__( 'Short Description', 'mcwp_list_entities'),
+                    'singleUrl'  => esc_html__( 'Single URL', 'mcwp_list_entities'),
+                    ),
                 ),
             'template'     => array(
                 'label'           => esc_html__( 'Template', 'mcwp_list_entities' ),
