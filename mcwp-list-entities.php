@@ -24,7 +24,7 @@ Class MCWP_Entities_List
 		}
 		wp_enqueue_script('list-entities-ajax-script', plugin_dir_url( __FILE__ ) . 'js/app.js', array('jquery'));
 
-		wp_enqueue_script('mustache', 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js');
+		wp_enqueue_script('mustache', plugin_dir_url( __FILE__ ) . 'bower_components/mustache.js/mustache.min.js');
 
 		wp_enqueue_style('list-entities-shortcode', plugin_dir_url( __FILE__ ) . 'css/mcwp-list-entities.css' );
 
