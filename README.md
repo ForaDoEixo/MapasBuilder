@@ -76,3 +76,21 @@ Minimal templating with {{mustaches}} in JavaScript - https://github.com/janl/mu
 	Filtra os resultados, mantendo somente os que tiverem linkados aos profiles especificados.
 
     **Exemplo**: `1,3,25`
+
+- **`filters_input`**:
+    Adiciona campos no front-end para filtragem pelo usuario. Tipos implementados: `text`, `select`
+
+    **Sintaxe**: `id`,`tipo de input`,`valor(es)`
+
+    **Exemplo**: `project_name,select,bienal:Bienal+festival:Festival`
+
+- **`filters`**:
+    Filtra os resultados da API. Utiliza Mustache para templating da pesquisa, fornecendo os valores dos campos do `filters_input`.
+
+    **Exemplo 1**: `name=ILIKE(Bienal%)&id=BET(1,100)`
+
+    **Exemplo 2**: `{{#project_name}}name=OR(ILIKE({{project_name}}),ILIKE(%{{project_name}}%),ILIKE(%{{project_name}}),ILIKE({{project_name}}%)){{/project_name}}`
+
+
+
+Projeto inspirado pelo plugin [medialab-ufg/list-events-shortcode](https://github.com/medialab-ufg/list-events-shortcode)
