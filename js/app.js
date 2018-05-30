@@ -62,7 +62,7 @@ function getEvents(){
         jQuery("#filters_input").children().each(function(index) { filters_values[jQuery(this).attr("id")] = jQuery(this).val(); })
 
         var filtersstr = Mustache.render(filters,filters_values);
-        if (filtersstr != "")
+        if ((filtersstr != "") && (filtersstr.charAt(0) != "&"))
         {
             filtersstr = "&"+filtersstr;
         }
