@@ -1,4 +1,4 @@
-# Mapas Culturais Plugin OU Mapas Builder
+# Mapas Builder
 
 Plugin WordPress que habilita um shortcode para buscar informações da API do **MapasCulturais**, e insere um módulo adicional ao Divi Builder, que permite configurar esse shortcode.
 
