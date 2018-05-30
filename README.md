@@ -76,3 +76,6 @@ Minimal templating with {{mustaches}} in JavaScript - https://github.com/janl/mu
 	Filtra os resultados, mantendo somente os que tiverem linkados aos profiles especificados.
 
     **Exemplo**: `1,3,25`
+
+
+Projeto inspirado pelo plugin [medialab-ufg/list-events-shortcode](https://github.com/medialab-ufg/list-events-shortcode)
