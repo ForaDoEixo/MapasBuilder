@@ -1,7 +1,9 @@
 (function ($) {
     jQuery( document ).ready(function() {
         getEvents();
-
+        jQuery( "#filters_input input[type=submit]" ).click(function() {
+            getEvents();
+        });
         var pagination = jQuery('#list_entities').data('pagination');
         if (typeof pagination !== 'undefined')
         {
@@ -52,7 +54,25 @@ function getEvents(){
     {
         var limitstr = "&@limit="+limit;
     }
-    var url = jQuery('#list_entities').data('url') + limitstr + pagestr;
+
+    var filters = jQuery('#list_entities').data('filters');
+    if (typeof filters !== 'undefined')
+    {
+        var filters_values={};
+        jQuery("#filters_input").children().each(function(index) { filters_values[jQuery(this).attr("id")] = jQuery(this).val(); })
+
+        var filtersstr = Mustache.render(filters,filters_values);
+        if (filtersstr != "")
+        {
+            filtersstr = "&"+filtersstr;
+        }
+
+    }
+    else
+    {
+        var filtersstr = "";
+    }
+    var url = jQuery('#list_entities').data('url') + limitstr + pagestr + filtersstr;
 
 
     jQuery.ajax({
