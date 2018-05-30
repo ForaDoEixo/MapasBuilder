@@ -80,6 +80,14 @@ Class MCWP_Entities_List
 			//$profiles  = $atts['profiles'];
 		}
 
+		if (isset($atts['filters'])) {
+			$filters  = $atts['filters'];
+		}
+
+		if (isset($atts['filters_input'])) {
+			$filters_input  = $atts['filters_input'];
+		}
+
 		if (isset($content))
 		{
 			$mtemplate = $content;
