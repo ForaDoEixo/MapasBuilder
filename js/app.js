@@ -81,8 +81,17 @@ function getEvents(){
         data: {},
         success: function(response) {
             showEvents(response);
+        },
+        error: function(xhr,status,response) {
+            throwError(status,response);
         }
     });
+}
+
+function throwError(status,response)
+{
+    jQuery('#loading').hide('fast');
+    jQuery('.list_entities').append("<span class='error'>"+status.toUpperCase()+"! The API returned an error: "+response+"</span>");
 }
 
 function processKeynames(entity)

@@ -6,6 +6,11 @@
   padding: 5px;
 }
 
+.list_entities .error {
+  color: red;
+  font-weight: bolder;
+}
+
 /* Loading animation */
 .spinner {
   margin: 100px auto 0;
