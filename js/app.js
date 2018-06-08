@@ -142,7 +142,7 @@ function showEvents(entities){
 
         entities[i].FormatDate = function() {
             return function(rawDate, render) {
-                return new Date(render(rawDate)).toLocaleDateString();
+                return new Date(render(rawDate)).toLocaleDateString("pt-BR");
             }
         };
 
