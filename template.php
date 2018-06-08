@@ -21,7 +21,6 @@
 					case 'select':
 						echo "<select id='".$aux_el[0]."'>";
 						$aux_opts = explode("+",$aux_el[2]);
-						echo "<option selected value></option>";
 						foreach ($aux_opts as $aux_opt) {
 							$aux_aux_opt = explode(":",$aux_opt);
 							echo "<option value='".$aux_aux_opt[0]."'>".$aux_aux_opt[1]."</input>";
