@@ -140,6 +140,11 @@ function showEvents(entities){
         thumb = '';
         processKeynames(entities[i]);
 
+        entities[i].FormatDate = function() {
+            return function(rawDate, render) {
+                return new Date(render(rawDate)).toLocaleDateString();
+            }
+        };
 
         html += Mustache.render(mustache_template,entities[i]);
     }
