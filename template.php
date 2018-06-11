@@ -28,10 +28,12 @@
 
 						echo "</select>";
 					break;
+					case 'submit':
+						echo "<button id=".$aux_el[0]." type='submit'>".$aux_el[2]."</button>";
+					break;
 				}
 			}
 			?>
-			<input type='submit'>
 		</div>
 		<?php } ?>
 	</div>
