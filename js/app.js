@@ -1,7 +1,10 @@
 (function ($) {
     jQuery( document ).ready(function() {
         getEvents();
-        jQuery( "#filters_input input[type=submit]" ).click(function() {
+        jQuery( "#filters_input button[type=submit]" ).click(function() {
+            getEvents();
+        });
+        jQuery( "#filters_input select" ).change(function() {
             getEvents();
         });
         var pagination = jQuery('#list_entities').data('pagination');
