@@ -1,1 +1,27 @@
-.et-pb-all-modules .et_pb_mcwp_list_entities:before, .et_pb_saved_layouts_list .et_pb_mcwp_list_entities:before { content: '\59'; }
+.et-pb-all-modules .et_pb_mcwp_list_entities:before, .et_pb_saved_layouts_list .et_pb_mcwp_list_entities:before,
+.et-pb-all-modules .et_pb_mcwp_list_entities .et_module_title, .et_pb_saved_layouts_list .et_pb_mcwp_list_entities .et_module_title
+{
+	content: '\59';
+
+	background: linear-gradient(270deg, #93236f, #1546af, #2988e2, #21973f, #d8ba0e, #e96f1a, #b71721);
+	background-size: 1400% 1400%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	animation: MapasBuilderIcon 4s linear infinite, MapasBuilderIconA 4s ease infinite;
+
+
+}
+
+
+@keyframes MapasBuilderIcon {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+@keyframes MapasBuilderIconA {
+	0%{transform: rotate3d(0);}
+	50%{transform: rotate3d(-3, 3, -1, 30deg)}
+	100%{transform: rotate3d(0);}
+}
