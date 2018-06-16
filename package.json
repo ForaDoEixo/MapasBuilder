@@ -1,0 +1,23 @@
+{
+  "name": "mapasbuilder",
+  "version": "1.0.0",
+  "description": "Plugin WordPress que habilita um shortcode para buscar informações da API do **MapasCulturais**, e insere um módulo adicional ao Divi Builder, que permite configurar esse shortcode.",
+  "main": "js/app.js",
+  "dependencies": {
+    "bower": "^1.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ForaDoEixo/MapasBuilder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ForaDoEixo/MapasBuilder/issues"
+  },
+  "homepage": "https://github.com/ForaDoEixo/MapasBuilder#readme"
+}
