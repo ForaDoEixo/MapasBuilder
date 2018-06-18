@@ -1,7 +1,8 @@
 (function ($) {
     jQuery( document ).ready(function() {
         getEvents();
-        jQuery( "#filters_input button[type=submit]" ).click(function() {
+        jQuery( "#filters_input" ).submit(function(e) {
+            e.preventDefault();
             getEvents();
         });
         jQuery( "#filters_input select" ).change(function() {

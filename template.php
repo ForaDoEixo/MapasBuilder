@@ -7,7 +7,7 @@
 		<button id="page-before"><</button><button id="page-after">></button>
 		<?php } ?>
 		<?php if (!is_null($filters_input)) { ?>
-		<div id="filters_input">
+		<form id="filters_input">
 			<?php
 			$filters_input_col = explode(";",$filters_input);
 			foreach ($filters_input_col as $filters_input_el) {
