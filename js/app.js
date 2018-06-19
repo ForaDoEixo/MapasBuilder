@@ -3,9 +3,11 @@
         getEvents();
         jQuery( "#filters_input" ).submit(function(e) {
             e.preventDefault();
+            jQuery('#list_entities').data('page',1);
             getEvents();
         });
         jQuery( "#filters_input select" ).change(function() {
+            jQuery('#list_entities').data('page',1);
             getEvents();
         });
         var pagination = jQuery('#list_entities').data('pagination');
@@ -26,15 +28,23 @@
 
             jQuery( "#page-after" ).click(function() {
                 var page = jQuery('#list_entities').data('page');
+                var numPages = jQuery('#list_entities').data('numPages');
                 if (typeof page !== 'undefined')
                 {
-                    jQuery('#list_entities').data('page',page+1);
+                    if (page < numPages)
+                    {
+                        jQuery('#list_entities').data('page',page+1);
+                        getEvents();
+                    }
                 }
                 else
                 {
-                    jQuery('#list_entities').data('page',2);
+                    if (numPages > 1) {
+                        jQuery('#list_entities').data('page',2);
+                        getEvents();
+                    }
                 }
-                getEvents();
+
             });
         }
     }
@@ -83,7 +93,10 @@ function getEvents(){
         url: url,
         type: 'GET',
         data: {},
-        success: function(response) {
+        success: function(response, status, xhr) {
+            var meta = JSON.parse(xhr.getResponseHeader("api-metadata"));
+            console.log(meta.numPages);
+            jQuery('#list_entities').data('numPages',meta.numPages);
             showEvents(response);
         },
         error: function(xhr,status,response) {
