@@ -15,6 +15,16 @@ Class MCWP_Entities_List
 		add_shortcode('list_entities', array(&$this, 'shortcode'));
 		add_action( 'wp_enqueue_scripts', array(&$this, 'addScripts') );
 		add_action( 'admin_enqueue_scripts', array(&$this, 'addAdminScripts') );
+
+		function custom_wpautop($content) {
+			if (has_shortcode( get_the_content(), 'list_entities') || has_shortcode(get_the_content(), 'et_pb_mcwp_list_entities'))
+				return $content;
+			else
+				return wpautop($content);
+		}
+
+		remove_filter('the_content', 'wpautop');
+		add_filter('the_content', 'custom_wpautop');
 	}
 
 	function addScripts() {
