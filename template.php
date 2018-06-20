@@ -1,3 +1,4 @@
+<div class="list_entities_wrapper">
 <?php if (!empty($mtemplate)) { ?>
 <script id="mustache-template" type="x-tmpl-mustache"><?= $mtemplate; ?></script>
 <?php } ?>
@@ -35,13 +36,13 @@
 		<?php } ?>
 	</div>
 	<?php if (!is_null($pagination)) { ?>
-	<div class="pagination top"><button id="page-before"><</button><button id="page-after">></button></div>
+	<div class="pagination top"><button type="button" id="page-before"><</button><span class="numEntities"><span class="from"></span><span class="to"></span><span class="outOf"></span></span><button type="button" id="page-after">></button></div>
 	<?php } ?>
 	<div id="loading" class="spinner" style="display:none;"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 
 	<div class="list_entities"></div>
 
 	<?php if (!is_null($pagination)) { ?>
-	<div class="pagination bottom"><button id="page-before"><</button><button id="page-after">></button></div>
+	<div class="pagination bottom"><button type="button" id="page-before"><</button><span class="numEntities"><span class="from"></span><span class="to"></span><span class="outOf"></span></span><button type="button" id="page-after">></button></div>
 	<?php } ?>
 </div>

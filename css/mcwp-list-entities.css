@@ -11,6 +11,12 @@
   font-weight: bolder;
 }
 
+.list_entities_wrapper .hidden
+{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 /* Loading animation */
 .spinner {
   margin: 100px auto 0;

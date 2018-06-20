@@ -53,6 +53,8 @@
 function getEvents(){
     jQuery('.list_entities').html('');
     jQuery('#loading').show('fast');
+    jQuery('.pagination').addClass('hidden');
+    jQuery('#filters_input').addClass('hidden');
 
     var page = jQuery('#list_entities').data('page');
     if (typeof page !== 'undefined')
@@ -95,7 +97,16 @@ function getEvents(){
         data: {},
         success: function(response, status, xhr) {
             var meta = JSON.parse(xhr.getResponseHeader("api-metadata"));
-            console.log(meta.numPages);
+            jQuery('.pagination .numEntities .outOf').text(meta.count);
+            jQuery('.pagination .numEntities .from').text(Math.min((((meta.page-1)*meta.limit)+1),meta.count));
+            if (meta.page == meta.numPages)
+            {
+                jQuery('.pagination .numEntities .to').text(((meta.page-1)*meta.limit)+(meta.count%meta.limit));
+            }
+            else
+            {
+                jQuery('.pagination .numEntities .to').text(meta.page*meta.limit);
+            }
             jQuery('#list_entities').data('numPages',meta.numPages);
             showEvents(response);
         },
@@ -142,6 +153,8 @@ function loadTemplate()
 
 function showEvents(entities){
     jQuery('#loading').hide('fast');
+    jQuery('#filters_input').removeClass('hidden');
+    jQuery('.pagination').removeClass('hidden');
     baseurl = jQuery('#list_entities').data('baseurl');
     entity  = jQuery('#list_entities').data('entity');
     if (jQuery("#mustache-template").length > 0)
