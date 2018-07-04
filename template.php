@@ -5,7 +5,7 @@
 <div id="list_entities" class="content" data-baseurl="<?= $atts['url']; ?>" data-url="<?= $url; ?>" data-entity="<?= $entity; ?>" data-filters="<?= $filters; ?>" <?= $pagination; ?> <?= $limit; ?>>
 	<div class="row top">
 		<?php if (!is_null($filters_input)) { ?>
-		<form id="filters_input">
+		<form id="filters_input"><span class='toggle_filters'></span>
 			<?php
 			$filters_input_col = explode(";",$filters_input);
 			foreach ($filters_input_col as $filters_input_el) {
@@ -32,7 +32,7 @@
 				}
 			}
 			?>
-		</div>
+		</form>
 		<?php } ?>
 	</div>
 	<?php if (!is_null($pagination)) { ?>

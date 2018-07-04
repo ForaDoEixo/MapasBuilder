@@ -10,6 +10,9 @@
             jQuery('#list_entities').data('page',1);
             getEvents();
         });
+        jQuery("#list_entities #filters_input .toggle_filters").click(function(e) {
+          jQuery("#list_entities #filters_input").toggleClass("open");
+      });
         var pagination = jQuery('#list_entities').data('pagination');
         if (typeof pagination !== 'undefined')
         {
