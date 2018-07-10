@@ -59,18 +59,20 @@
       transform: scale(1.0);
     }
   }
-
-  #filters_input .toggle_filters:after {
-    content: "+";
-    border: 1px solid black;
-    width: 1em;
-    display: inline-block;
-    text-align: center;
-  }
-  #filters_input.open {
-    height: auto;
-  }
-  #filters_input {
-    height: 2em;
-    overflow-y: hidden;
+  @media all and (max-width: 600px)
+  {
+    #filters_input .toggle_filters:after {
+      content: "+";
+      border: 1px solid black;
+      width: 1em;
+      display: inline-block;
+      text-align: center;
+    }
+    #filters_input.open {
+      height: auto;
+    }
+    #filters_input {
+      height: 2em;
+      overflow-y: hidden;
+    }
   }
