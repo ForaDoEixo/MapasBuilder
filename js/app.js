@@ -100,17 +100,19 @@ function getEvents(){
         data: {},
         success: function(response, status, xhr) {
             var meta = JSON.parse(xhr.getResponseHeader("api-metadata"));
-            jQuery('.pagination .numEntities .outOf').text(meta.count);
-            jQuery('.pagination .numEntities .from').text(Math.min((((meta.page-1)*meta.limit)+1),meta.count));
-            if (meta.page == meta.numPages)
-            {
-                jQuery('.pagination .numEntities .to').text(((meta.page-1)*meta.limit)+(meta.count%meta.limit));
+            if (meta != null) {
+                jQuery('.pagination .numEntities .outOf').text(meta.count);
+                jQuery('.pagination .numEntities .from').text(Math.min((((meta.page-1)*meta.limit)+1),meta.count));
+                if (meta.page == meta.numPages)
+                {
+                    jQuery('.pagination .numEntities .to').text(((meta.page-1)*meta.limit)+(meta.count%meta.limit));
+                }
+                else
+                {
+                    jQuery('.pagination .numEntities .to').text(meta.page*meta.limit);
+                }
+                jQuery('#list_entities').data('numPages',meta.numPages);
             }
-            else
-            {
-                jQuery('.pagination .numEntities .to').text(meta.page*meta.limit);
-            }
-            jQuery('#list_entities').data('numPages',meta.numPages);
             showEvents(response);
         },
         error: function(xhr,status,response) {

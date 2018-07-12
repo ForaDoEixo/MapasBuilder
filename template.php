@@ -2,7 +2,7 @@
 <?php if (!empty($mtemplate)) { ?>
 <script id="mustache-template" type="x-tmpl-mustache"><?= $mtemplate; ?></script>
 <?php } ?>
-<div id="list_entities" class="content" data-baseurl="<?= $atts['url']; ?>" data-url="<?= $url; ?>" data-entity="<?= $entity; ?>" data-filters="<?= $filters; ?>" <?= $pagination; ?> <?= $limit; ?>>
+<div id="list_entities" class="content" data-baseurl="<?= $atts['url']; ?>" data-url="<?= $url; ?>" data-entity="<?= $entity; ?>" data-filters="<?= $filters; ?>" <?= $pagination; ?> data-page="1" <?= $limit; ?>>
 	<div class="row top">
 		<?php if (!is_null($filters_input)) { ?>
 		<form id="filters_input"><span class='toggle_filters'></span>
