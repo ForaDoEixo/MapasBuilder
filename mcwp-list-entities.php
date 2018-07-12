@@ -32,11 +32,18 @@ Class MCWP_Entities_List
 		if( is_a( $post, 'WP_Post' ) && !has_shortcode( $post->post_content, 'list_entities') && !has_shortcode($post->post_content, 'et_pb_mcwp_list_entities') ) {
 			return;
 		}
-		wp_enqueue_script('list-entities-ajax-script', plugin_dir_url( __FILE__ ) . 'js/app.js', array('jquery'));
+		wp_enqueue_script('mapas-builder-proxy-ajax-script', plugin_dir_url( __FILE__ ) . 'js/app.js', array('jquery'));
 
 		wp_enqueue_script('mustache', plugin_dir_url( __FILE__ ) . 'bower_components/mustache.js/mustache.min.js');
 
 		wp_enqueue_style('list-entities-shortcode', plugin_dir_url( __FILE__ ) . 'css/mcwp-list-entities.css' );
+
+
+		wp_localize_script(
+			'mapas-builder-proxy-ajax-script',
+			'mapas_builder_proxy_ajax_obj',
+			array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) )
+			);
 
 	}
 	function addAdminScripts() {
@@ -140,3 +147,34 @@ add_action('et_builder_ready', 'mcwp_load_the_module');
 function mcwp_load_the_module() {
 	require 'mcwp_entities_module.php';
 }
+
+function mapas_builder_proxy_request() {
+	if ( isset($_REQUEST) ) {
+
+		$url = $_REQUEST['url'];
+		$cache_id = md5($url);
+		$chkch = get_transient($cache_id);
+		if ($chkch)
+		{
+			$response = $chkch;
+		}
+		else
+		{
+			$response = wp_remote_get($url, array('timeout' => '120'));
+			set_transient($cache_id,$response,60*60);
+		}
+
+
+		header("API-Metadata: ".$response["headers"]["api-metadata"]);
+		header("Access-Control-Expose-Headers: API-Metadata");
+		header("Content-Type: application/json");
+		echo $response["body"];
+
+	}
+
+	die();
+}
+
+add_action( 'wp_ajax_mapas_builder_proxy_request', 'mapas_builder_proxy_request' );
+
+add_action( 'wp_ajax_nopriv_mapas_builder_proxy_request', 'mapas_builder_proxy_request' );

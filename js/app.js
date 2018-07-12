@@ -95,9 +95,12 @@ function getEvents(){
 
 
     jQuery.ajax({
-        url: url,
+        url: mapas_builder_proxy_ajax_obj.ajaxurl,
         type: 'GET',
-        data: {},
+        data: {
+            'action': 'mapas_builder_proxy_request',
+            'url' : url
+        },
         success: function(response, status, xhr) {
             var meta = JSON.parse(xhr.getResponseHeader("api-metadata"));
             if (meta != null) {
