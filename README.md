@@ -3,7 +3,7 @@
 Plugin WordPress que habilita um shortcode para buscar informações da API do **MapasCulturais**, e insere um módulo adicional ao Divi Builder, que permite configurar esse shortcode.
 
 ![GitHub](https://img.shields.io/github/license/ForaDoEixo/MapasBuilder.svg)
-[![chatroom icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/joinchat/AHZmBhAkX_efR9za0V_J1A)
+[![chatroom icon](https://patrolavia.github.io/telegram-badge/chat.png)](https://t.me/MapasBuilder)
 
 # Screenshot
 ![Screenshot](./screenshots/0.png)
